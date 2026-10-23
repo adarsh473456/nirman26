@@ -1,0 +1,15 @@
+fastapi>=0.116,<1
+uvicorn[standard]>=0.35,<1
+sqlalchemy>=2.0,<3
+psycopg[binary]>=3.2,<4
+pydantic>=2.11,<3
+pydantic-settings>=2.10,<3
+PyJWT[crypto]>=2.10,<3
+httpx>=0.28,<1
+elasticsearch>=8.15,<10
+boto3>=1.35,<2
+python-multipart>=0.0.20,<1
+openai>=1.100,<3
+psycopg2-binary>=2.9,<3
+alembic>=1.16,<2
+pytest>=8,<9
