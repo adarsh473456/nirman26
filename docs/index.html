@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030712">
+  <meta name="description" content="CENALPH space-industry supplier discovery and sourcing preview.">
+  <title>CENALPH | Space supply network</title>
+  <style>
+    :root{color-scheme:dark;--bg:#030712;--navy:#061122;--blue:#0b1e3a;--bright:#0ea5ff;--white:#f5f7eb;--muted:#9aa3b8;--line:rgba(210,226,250,.14)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(135deg,#093566 0%,#001d3c 100%);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .topline{height:34px;background:#061122;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100vw - 1180px)/2));font-size:11px;color:#d5deee}
+    .topline strong{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+    header{position:sticky;top:0;z-index:4;background:rgba(3,7,18,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1220px;margin:auto;padding:12px 20px;display:flex;align-items:center;gap:28px;min-height:72px}
+    .logo{width:164px;height:48px;object-fit:contain;object-position:left center;flex:none}
+    .links{display:flex;align-items:center;gap:28px;margin:auto;color:#d1d9e8;font-size:13px;font-weight:650}
+    .links a:hover,.secondary:hover{color:var(--bright)}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:11px 16px;font-size:12px;font-weight:800;white-space:nowrap}
+    .secondary{border:1px solid rgba(14,165,255,.35);color:#d7efff}
+    .primary{background:var(--bright);color:#061122;box-shadow:0 6px 24px rgba(14,165,255,.2)}
+    .primary:hover{background:#0066ff;color:white}
+    main{overflow:hidden}
+    .hero{position:relative;background:#030712;border-bottom:1px solid var(--line)}
+    .hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(133,169,202,.5) 1px,transparent 0);background-size:28px 28px;opacity:.18;pointer-events:none}
+    .orbit{position:absolute;border:1px solid rgba(14,165,255,.14);border-radius:50%;width:min(72vw,690px);aspect-ratio:1;right:-170px;top:-260px}
+    .orbit.two{width:min(55vw,510px);right:-90px;top:-170px}
+    .hero-inner{position:relative;max-width:1220px;margin:auto;padding:76px 20px 68px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(14,165,255,.3);background:rgba(255,255,255,.04);border-radius:999px;padding:8px 12px;color:#bfe6ff;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    h1{font-size:clamp(38px,6vw,68px);line-height:1.03;letter-spacing:-.055em;margin:20px 0 16px;max-width:760px}
+    h1 span{color:var(--bright)}
+    .intro{color:#c3cada;font-size:15px;line-height:1.8;max-width:650px;margin:0}
+    .search{display:flex;gap:8px;padding:8px;background:#fff;border-radius:16px;margin-top:26px;box-shadow:0 20px 60px rgba(0,0,0,.28);max-width:730px}
+    .search input{flex:1;min-width:0;border:0;outline:0;color:#0b1e3a;padding:0 12px;font-size:14px}
+    .search input::placeholder{color:#8d9bb2}
+    .search button{border:0;cursor:pointer}
+    .popular{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;color:#c3cada;font-size:11px}
+    .chip{border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:999px;padding:7px 11px;color:#e4eaf5;cursor:pointer}
+    .chip:hover{border-color:var(--bright)}
+    .trust{display:flex;flex-wrap:wrap;gap:20px;margin-top:24px;color:#d2d9e6;font-size:11px}
+    .trust b{color:var(--bright);margin-right:5px}
+    .visual{position:relative;min-height:310px;display:grid;place-items:center}
+    .planet{width:260px;height:260px;border-radius:50%;border:1px solid rgba(14,165,255,.28);display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,rgba(14,165,255,.12),rgba(6,17,34,.05) 62%,transparent 63%)}
+    .planet:before,.planet:after{content:"";position:absolute;width:220px;height:220px;border:1px dashed rgba(14,165,255,.28);border-radius:50%}
+    .planet:after{width:145px;height:145px;border-style:solid}
+    .planet-core{width:82px;height:82px;border-radius:50%;display:grid;place-items:center;background:rgba(14,165,255,.13);color:#a4ddff;font-size:39px;box-shadow:0 0 55px rgba(14,165,255,.2)}
+    .float-card{position:absolute;background:rgba(11,30,58,.96);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:0 12px 32px rgba(0,0,0,.28);font-size:11px}
+    .float-card small{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
+    .float-card.one{left:0;top:36px}.float-card.two{right:0;bottom:30px}
+    .stats{background:#061122;border-bottom:1px solid var(--line)}
+    .stats-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);padding:19px 20px}
+    .stat{text-align:center;border-right:1px solid var(--line);padding:6px 10px}
+    .stat:last-child{border:0}.stat strong{display:block;font-size:19px}.stat span{display:block;color:var(--muted);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+    .section{max-width:1220px;margin:auto;padding:54px 20px}
+    .section-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}
+    .kicker{font-size:10px;font-weight:850;letter-spacing:.16em;text-transform:uppercase;color:var(--bright)}
+    h2{font-size:clamp(24px,3vw,34px);letter-spacing:-.035em;margin:8px 0 0}
+    .section-link{font-size:12px;font-weight:800;color:#8bd4ff}
+    .categories{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .category{display:flex;gap:14px;align-items:center;min-height:112px;padding:17px;border-radius:15px;border:1px solid var(--line);background:linear-gradient(140deg,#0b1e3a,#08172d);transition:transform .18s,border-color .18s}
+    .category:hover{transform:translateY(-2px);border-color:rgba(14,165,255,.62)}
+    .icon{width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;background:rgba(14,165,255,.12);color:#65c4ff;font-size:22px}
+    .category strong{display:block;font-size:13px}.category small{display:block;color:#aab6ca;font-size:10px;line-height:1.5;margin-top:5px}
+    .catalog{background:linear-gradient(135deg,#093566 0%,#001d3c 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .capability{background:#f8fafc;color:#0b1e3a;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.35)}
+    .cap-visual{height:110px;background:linear-gradient(135deg,#dcecf5,#f0f4fa);display:grid;place-items:center;color:#0b1e3a;font-size:40px}
+    .cap-body{padding:14px}.cap-body strong{display:block;font-size:12px;line-height:1.4}.cap-body span{display:block;color:#68758b;font-size:10px;margin-top:6px}.cap-body a{display:block;color:#0874b7;border-top:1px solid #e2e8f0;padding-top:10px;margin-top:12px;font-size:10px;font-weight:850}
+    .steps{background:#061122;border-top:1px solid var(--line)}
+    .steps-inner{max-width:1220px;margin:auto;padding:48px 20px;display:grid;grid-template-columns:.8fr 1.2fr;gap:32px;align-items:center}
+    .steps p{color:#b8c3d4;font-size:13px;line-height:1.7;max-width:420px}
+    .step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .step{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:15px;padding:15px}
+    .step b{color:var(--bright);font-size:11px}.step strong{display:block;margin-top:14px;font-size:12px}.step span{display:block;color:#aeb8c9;font-size:10px;line-height:1.6;margin-top:7px}
+    footer{background:#030712;border-top:1px solid var(--line);padding:22px 20px;color:#96a2b6;font-size:10px}
+    .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .notice{max-width:1180px;margin:0 auto 18px;padding:0 20px;color:#93c5fd;font-size:10px}
+    @media(max-width:800px){.nav{gap:14px}.links{gap:14px}.visual{display:none}.hero-inner{grid-template-columns:1fr;padding:58px 20px 48px}.categories{grid-template-columns:repeat(2,1fr)}.steps-inner{grid-template-columns:1fr}.capabilities{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.topline{padding:0 14px}.topline span:last-child{display:none}.nav{min-height:62px;padding:8px 14px;gap:10px}.logo{width:132px;height:42px}.links{display:none}.nav-actions{margin-left:auto}.nav-actions .secondary{display:none}.button{padding:10px 12px;font-size:11px}.hero-inner{padding:46px 16px 34px}h1{font-size:42px;margin-top:17px}.intro{font-size:13px;line-height:1.7}.search{margin-top:22px;display:grid;grid-template-columns:1fr;padding:7px}.search input{height:42px}.search .primary{height:42px}.popular{font-size:10px}.chip{padding:7px 9px}.trust{gap:11px 16px;font-size:10px}.stats-inner{grid-template-columns:repeat(2,1fr);padding:10px 12px}.stat{padding:10px 5px}.stat:nth-child(2){border-right:0}.stat strong{font-size:17px}.stat span{font-size:8px}.section{padding:38px 15px}.section-heading{align-items:start;flex-direction:column;gap:10px;margin-bottom:16px}.categories{grid-template-columns:1fr;gap:9px}.category{min-height:88px;padding:13px}.capabilities{grid-template-columns:1fr 1fr;gap:8px}.cap-visual{height:82px;font-size:29px}.cap-body{padding:10px}.cap-body strong{font-size:10px}.cap-body span{font-size:9px}.cap-body a{font-size:9px}.steps-inner{padding:38px 15px}.step-grid{grid-template-columns:1fr}.step{padding:12px}.footer-inner{font-size:9px}}
+    @media(max-width:360px){h1{font-size:37px}.nav-actions .primary{padding:9px}.capabilities{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="topline"><span>◉ &nbsp; Space supply network for buyers, manufacturers and mission teams</span><strong>Components · Materials · Qualification</strong></div>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#" aria-label="CENALPH home"><img class="logo" src="./assets/cenalph-orbit-logo.png" alt="CENALPH"></a>
+      <div class="links"><a href="#categories">Explore supply</a><a href="#capabilities">Find suppliers</a><a href="#how-it-works">How it works</a></div>
+      <div class="nav-actions"><a class="button secondary" href="#capabilities">List capabilities</a><a class="button primary" href="#categories">Explore <span aria-hidden="true">→</span></a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="orbit"></div><div class="orbit two"></div>
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow"><span>✦</span> CENALPH · Space industry network</div>
+          <h1>Build for orbit.<br><span>Source on Earth.</span></h1>
+          <p class="intro">Find specialist manufacturers, materials and test services for satellites, launch systems and ground infrastructure. Share one requirement and manage every response in one place.</p>
+          <form id="search" class="search">
+            <input id="query" type="search" aria-label="Search space suppliers" placeholder="Search materials, components or capabilities">
+            <button class="button primary" type="submit">Find suppliers <span aria-hidden="true">→</span></button>
+          </form>
+          <div class="popular"><strong>Popular:</strong><button class="chip" data-query="satellite">Satellite structures</button><button class="chip" data-query="carbon">Carbon-fibre panels</button><button class="chip" data-query="thermal">Thermal vacuum test</button><button class="chip" data-query="flight">Flight electronics</button></div>
+          <div id="message" class="notice" role="status" style="display:none"></div>
+          <div class="trust"><span><b>✓</b> Supplier verification signals</span><span><b>▣</b> Contact details stay private</span><span><b>▤</b> RFQs and quotes in one workflow</span></div>
+        </div>
+        <div class="visual" aria-hidden="true"><div class="planet"><div class="planet-core">◎</div></div><div class="float-card one"><small>Mission ready</small>Components & materials</div><div class="float-card two"><small>Technical fit first</small>Compare compliance & lead time</div></div>
+      </div>
+    </section>
+    <section class="stats" aria-label="Platform overview"><div class="stats-inner"><div class="stat"><strong>6</strong><span>Space supply categories</span></div><div class="stat"><strong>RFQ</strong><span>Quote workflow</span></div><div class="stat"><strong>Private</strong><span>Buyer & supplier contact</span></div><div class="stat"><strong>India</strong><span>Built for space supply</span></div></div></section>
+    <section id="categories" class="section">
+      <div class="section-heading"><div><div class="kicker">Explore the supply chain</div><h2>Find the right capability for your mission</h2></div><a class="section-link" href="#capabilities">Browse capabilities →</a></div>
+      <div class="categories" id="category-grid">
+        <a class="category" data-search="space-grade materials alloys composites thermal"><span class="icon">◈</span><span><strong>Space-grade materials</strong><small>Alloys, composites & thermal materials</small></span></a>
+        <a class="category" data-search="satellite subsystems avionics power communications"><span class="icon">⌘</span><span><strong>Satellite subsystems</strong><small>Avionics, power & communications</small></span></a>
+        <a class="category" data-search="precision manufacturing cnc additive fabrication"><span class="icon">⟐</span><span><strong>Precision manufacturing</strong><small>CNC, additive & fabrication</small></span></a>
+        <a class="category" data-search="test qualification environmental vibration emc"><span class="icon">⌁</span><span><strong>Test & qualification</strong><small>Environmental, vibration & EMC</small></span></a>
+        <a class="category" data-search="propulsion launch thrusters tanks"><span class="icon">↗</span><span><strong>Propulsion & launch</strong><small>Thrusters, tanks & launch systems</small></span></a>
+        <a class="category" data-search="mission ground systems software services"><span class="icon">◎</span><span><strong>Mission & ground systems</strong><small>Ground support, software & services</small></span></a>
+      </div>
+    </section>
+    <section id="capabilities" class="catalog">
+      <div class="section">
+        <div class="section-heading"><div><div class="kicker">Materials & spacecraft systems</div><h2>Explore sample capabilities</h2></div><span class="section-link">Space-focused supplier discovery</span></div>
+        <div class="capabilities" id="capability-grid">
+          <article class="capability" data-search="aluminium alloy plate billet"><div class="cap-visual">▱</div><div class="cap-body"><strong>Aluminium alloy plate & billet</strong><span>6061-T6 · 7075 · custom cut</span><a href="#how-it-works">View capability →</a></div></article>
+          <article class="capability" data-search="titanium stock fasteners"><div class="cap-visual">◇</div><div class="cap-body"><strong>Titanium stock & fasteners</strong><span>Ti-6Al-4V · bar · plate · hardware</span><a href="#how-it-works">View capability →</a></div></article>
+          <article class="capability" data-search="carbon fibre composite panels"><div class="cap-visual">▦</div><div class="cap-body"><strong>Carbon-fibre composite panels</strong><span>CFRP · laminate · sandwich core</span><a href="#how-it-works">View capability →</a></div></article>
+          <article class="capability" data-search="flight electronics avionics"><div class="cap-visual">⌘</div><div class="cap-body"><strong>Flight electronics & avionics</strong><span>OBC · power boards · harnesses</span><a href="#how-it-works">View capability →</a></div></article>
+          <article class="capability" data-search="thermal vacuum test services"><div class="cap-visual">◌</div><div class="cap-body"><strong>Thermal-vacuum test services</strong><span>Chambers · cycling · outgassing</span><a href="#how-it-works">View capability →</a></div></article>
+          <article class="capability" data-search="precision machining cnc"><div class="cap-visual">⚙</div><div class="cap-body"><strong>5-axis precision machining</strong><span>CNC milling · turning · CMM</span><a href="#how-it-works">View capability →</a></div></article>
+        </div>
+      </div>
+    </section>
+    <section id="how-it-works" class="steps">
+      <div class="steps-inner"><div><div class="kicker">A better way to source</div><h2>From requirement to a decision-ready quote.</h2><p>Keep technical fit, supplier responses and commercial terms together while your sourcing team stays in control.</p><a class="button primary" href="#categories">Explore the network →</a></div><div class="step-grid"><div class="step"><b>01</b><strong>Describe the need</strong><span>Add material, grade, quantity, qualification and delivery details.</span></div><div class="step"><b>02</b><strong>Route privately</strong><span>Coordinate supplier enquiries while protecting direct contact details.</span></div><div class="step"><b>03</b><strong>Compare responses</strong><span>Review compliance, documentation, lead time and price together.</span></div></div></div>
+    </section>
+  </main>
+  <footer><div class="footer-inner"><span>© CENALPH · Space industry sourcing</span><span>Responsive public preview · Sample capability listings</span></div></footer>
+  <script>
+    const form=document.getElementById("search");
+    const input=document.getElementById("query");
+    const message=document.getElementById("message");
+    const items=[...document.querySelectorAll("[data-search]")];
+    function search(term){const q=term.trim().toLowerCase();let shown=0;items.forEach(item=>{const match=!q||item.dataset.search.includes(q);item.style.display=match?"":"none";if(match)shown++});message.style.display="block";message.textContent=q?(shown+" matching categories or sample capabilities shown for “"+term.trim()+"”."):"Showing all sample categories and capabilities.";document.getElementById("capabilities").scrollIntoView({behavior:"smooth"});}
+    form.addEventListener("submit",event=>{event.preventDefault();search(input.value)});
+    document.querySelectorAll("[data-query]").forEach(button=>button.addEventListener("click",()=>{input.value=button.dataset.query;search(input.value)}));
+  </script>
+</body>
+</html>
